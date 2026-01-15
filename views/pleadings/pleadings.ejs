@@ -1,330 +1,324 @@
+<!-- pleadings.ejs code :== -->
+
 <%- include('../partials/html') %>
 
 <head>
-    <%- include('../partials/title-meta') %>
-    <%- include('../partials/head-css') %>
+  <%- include('../partials/title-meta') %>
+  <%- include('../partials/head-css') %>
 
-    <!-- SweetAlert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
-<div class="wrapper">
 
+  <!-- Begin page -->
+  <div class="wrapper">
+
+    <!-- Sidebar + Topbar (template controlled) -->
     <%- include('../partials/menu') %>
 
     <!-- Page Content -->
-    <div class="page-content">
-        <div class="page-container">
+     <div class="content-page">
+  <div class="content">
+    <div class="container-fluid">
 
-            <!-- Page Title -->
-            <div class="row">
-                <div class="col-12">
-                    <div class="page-title-box">
-                        <h4 class="page-title">
-                            Pleadings & Documents (Case <%= caseId %>)
-                        </h4>
-                    </div>
-                </div>
-            </div>
+    
+        <!-- ===================== -->
+        <!-- TABS -->
+        <!-- ===================== -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-bs-toggle="tab" href="#upload" role="tab">
+              Upload Pleading
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#documents" role="tab">
+              Documents & Merge
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#indexing" role="tab">
+              Indexing
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#signatories" role="tab">
+              Authorise Signatories
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#oath" role="tab">
+              Oath
+            </a>
+          </li>
+        </ul>
 
-            <!-- ===== PLEADINGS UI START ===== -->
+        <!-- ===================== -->
+        <!-- TAB CONTENT -->
+        <!-- ===================== -->
+        <div class="tab-content mt-3">
 
-             <!-- ===== TABS ===== -->
-    <ul class="nav nav-tabs" id="pleadingTabs">
-        <li class="nav-item">
-            <a class="nav-link active" data-tab="upload">Upload Pleading</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-tab="documents">Documents & Merge</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-tab="indexing">Indexing</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-tab="signatories">Authorise Signatories</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-tab="oath">Oath</a>
-        </li>
-    </ul>
+          <!-- TAB 1: UPLOAD -->
+         <div class="card-body">
 
-    <div class="card p-3 mt-3">
-
-
-
-                <!-- Paste your existing tab contents here -->
-                  <!-- ===== TAB 1: UPLOAD PLEADING ===== -->
-<div id="upload" class="tab-content">
-
-    <div class="card border shadow-sm">
-        <div class="card-header bg-light">
-            <h5 class="mb-0">Upload Pleading</h5>
-        </div>
-
-        <div class="card-body">
-            <form id="pleadingForm">
-
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <label class="form-label">Document Type</label>
-                        <select class="form-control" id="docType" required>
-                            <option value="">Select</option>
-                            <option>Petition</option>
-                            <option>Reply</option>
-                            <option>Affidavit</option>
-                        </select>
-                    </div>
-
-                    <div class="col-md-4 mb-3">
-                        <label class="form-label">Title</label>
-                        <input type="text" id="title" class="form-control" required>
-                    </div>
-
-                    <div class="col-md-4 mb-3">
-                        <label class="form-label">Version</label>
-                        <input type="text" id="version" class="form-control" value="v1.0">
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">File Upload</label>
-                    <input type="file" id="file" class="form-control">
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Description</label>
-                    <textarea id="description" class="form-control"></textarea>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Tag</label>
-                    <input type="text" id="tag" class="form-control" placeholder="Urgent / Final">
-                </div>
-
-                <button type="button" id="savePleading" class="btn btn-primary">
-                    Save (Dummy)
-                </button>
-            </form>
-        </div>
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Document Type</label>
+      <select id="docType" class="form-control">
+        <option value="">Select</option>
+        <option>Petition</option>
+        <option>Reply</option>
+        <option>Affidavit</option>
+      </select>
     </div>
 
-    <!-- ===== SAVED DATA TABLE ===== -->
-    <div class="card mt-4">
-        <div class="card-header bg-light">
-            <h6 class="mb-0">Saved Pleadings (Dummy)</h6>
-        </div>
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Title</label>
+      <input id="title" class="form-control">
+    </div>
 
-        <div class="card-body">
-            <table class="table table-bordered table-striped">
-                <thead>
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Version</label>
+      <input id="version" class="form-control" value="v1.0">
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Tag</label>
+    <input id="tag" class="form-control">
+  </div>
+
+  <button id="savePleading" class="btn btn-primary">
+    Save (Dummy)
+  </button>
+
+</div>
+<!-- //table -->
+<div class="card mt-3">
+  <div class="card-body">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Type</th>
+          <th>Title</th>
+          <th>Version</th>
+          <th>Tag</th>
+        </tr>
+      </thead>
+      <tbody id="pleadingTable">
+        <tr>
+          <td colspan="5" class="text-muted text-center">
+            No pleadings added
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+          <!-- TAB 2: DOCUMENTS & MERGE -->
+          <div class="tab-pane fade" id="documents" role="tabpanel">
+            <div class="card">
+              <div class="card-body">
+
+                <table class="table table-bordered">
+                  <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Document Type</th>
-                        <th>Title</th>
-                        <th>Version</th>
-                        <th>Tag</th>
+                      <th>Order</th>
+                      <th>Document Title</th>
+                      <th>Version</th>
                     </tr>
-                </thead>
-                <tbody id="pleadingsTable">
+                  </thead>
+                  <tbody>
                     <tr>
-                        <td colspan="5" class="text-center text-muted">
-                            No pleadings added yet
-                        </td>
+                      <td>1</td>
+                      <td>Petition</td>
+                      <td>v1.0</td>
                     </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+                    <tr>
+                      <td>2</td>
+                      <td>Reply</td>
+                      <td>v1.0</td>
+                    </tr>
+                  </tbody>
+                </table>
 
-</div>
+                <button class="btn btn-warning">Merge Documents</button>
 
-        <!-- ===== TAB 2: DOCUMENTS & MERGE ===== -->
-       <div id="documents" class="tab-content d-none">
-    <h5 class="mb-3">Documents & Merge</h5>
-
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Order</th>
-                <th>Document Title</th>
-                <th>Version</th>
-            </tr>
-        </thead>
-        <tbody id="documentsTable">
-            <tr draggable="true">
-                <td>1</td>
-                <td>Petition</td>
-                <td>v1.0</td>
-            </tr>
-            <tr draggable="true">
-                <td>2</td>
-                <td>Reply</td>
-                <td>v1.0</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <p class="text-muted">Drag rows to reorder (UI only)</p>
-
-    <button id="mergeDocs" class="btn btn-warning">
-        Merge Documents
-    </button>
-</div>
-
-
-        <!-- ===== TAB 3: INDEXING ===== -->
-        <div id="indexing" class="tab-content d-none">
-    <h5 class="mb-3">Indexing</h5>
-
-    <div class="row mb-3">
-        <div class="col-md-3">
-            <input id="indexTitle" class="form-control" placeholder="Index Title">
-        </div>
-        <div class="col-md-3">
-            <input id="fromPage" class="form-control" placeholder="From Page">
-        </div>
-        <div class="col-md-3">
-            <input id="toPage" class="form-control" placeholder="To Page">
-        </div>
-        <div class="col-md-3">
-            <button id="addIndex" class="btn btn-success">Add Index</button>
-        </div>
-    </div>
-
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Index Title</th>
-                <th>From</th>
-                <th>To</th>
-            </tr>
-        </thead>
-        <tbody id="indexTable">
-            <tr>
-                <td colspan="4" class="text-muted text-center">
-                    No index added
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-
-        <!-- ===== TAB 4: AUTHORISE SIGNATORIES ===== -->
-        <div id="signatories" class="tab-content d-none">
-    <h5 class="mb-3">Authorise Signatories</h5>
-
-    <div class="row mb-3">
-        <div class="col-md-3">
-            <input id="signerRole" class="form-control" placeholder="Role">
-        </div>
-        <div class="col-md-3">
-            <input id="signerName" class="form-control" placeholder="Name">
-        </div>
-        <div class="col-md-3">
-            <input id="signerContact" class="form-control" placeholder="Mobile / Email">
-        </div>
-        <div class="col-md-3">
-            <select id="signMethod" class="form-control">
-                <option>OTP</option>
-                <option>eSign</option>
-            </select>
-        </div>
-    </div>
-
-    <button id="addSigner" class="btn btn-primary mb-3">Add Signer</button>
-
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Role</th>
-                <th>Name</th>
-                <th>Contact</th>
-                <th>Method</th>
-            </tr>
-        </thead>
-        <tbody id="signerTable">
-            <tr>
-                <td colspan="5" class="text-muted text-center">
-                    No signers added
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-
-        <!-- ===== TAB 5: OATH ===== -->
-        <!-- ===== TAB 5: OATH ===== -->
-<div id="oath" class="tab-content d-none">
-    <h5 class="mb-3">Oath</h5>
-
-    <div class="row mb-3">
-        <div class="col-md-4">
-            <label>Oath Type</label>
-            <input id="oathType" class="form-control" placeholder="Affidavit / Declaration">
-        </div>
-
-        <div class="col-md-4">
-            <label>Date</label>
-            <input type="date" id="oathDate" class="form-control">
-        </div>
-
-        <div class="col-md-4">
-            <label>File Upload</label>
-            <input type="file" id="oathFile" class="form-control">
-        </div>
-    </div>
-
-    <div class="mb-3">
-        <label>Notes</label>
-        <textarea id="oathNotes" class="form-control"></textarea>
-    </div>
-
-    <button id="saveOath" class="btn btn-success mb-4">
-        Save Oath (Dummy)
-    </button>
-
-    <!-- Saved Oath Table -->
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Oath Type</th>
-                <th>Date</th>
-                <th>Notes</th>
-            </tr>
-        </thead>
-        <tbody id="oathTable">
-            <tr>
-                <td colspan="4" class="text-muted text-center">
-                    No oath added
-                </td>
-            </tr>
-        </tbody>
-    </table>
-<!-- JS -->
-<script src="/js/vendor.min.js"></script>
-<script src="/js/app.min.js"></script>
-<script src="/js/pleadings.js"></script>
-
+              </div>
             </div>
+          </div>
 
-            <!-- ===== PLEADINGS UI END ===== -->
+          <!-- TAB 3: INDEXING -->
+          <div class="tab-pane fade" id="indexing" role="tabpanel">
+            <div class="card">
+              <div class="card-body">
+
+                <div class="row mb-3">
+                  <div class="col-md-3">
+                    <input class="form-control" placeholder="Index Title">
+                  </div>
+                  <div class="col-md-3">
+                    <input class="form-control" placeholder="From Page">
+                  </div>
+                  <div class="col-md-3">
+                    <input class="form-control" placeholder="To Page">
+                  </div>
+                  <div class="col-md-3">
+                    <button class="btn btn-success w-100">Add Index</button>
+                  </div>
+                </div>
+
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Index Title</th>
+                      <th>From</th>
+                      <th>To</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colspan="4" class="text-muted text-center">
+                        No index added
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 4: SIGNATORIES -->
+          <div class="tab-pane fade" id="signatories" role="tabpanel">
+            <div class="card">
+              <div class="card-body">
+
+                <div class="row mb-3">
+                  <div class="col-md-3">
+                    <input class="form-control" placeholder="Role">
+                  </div>
+                  <div class="col-md-3">
+                    <input class="form-control" placeholder="Name">
+                  </div>
+                  <div class="col-md-3">
+                    <input class="form-control" placeholder="Contact">
+                  </div>
+                  <div class="col-md-3">
+                    <select class="form-control">
+                      <option>OTP</option>
+                      <option>eSign</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button class="btn btn-primary mb-3">Add Signer</button>
+
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Role</th>
+                      <th>Name</th>
+                      <th>Contact</th>
+                      <th>Method</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colspan="5" class="text-muted text-center">
+                        No signers added
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 5: OATH -->
+          <div class="tab-pane fade" id="oath" role="tabpanel">
+            <div class="card">
+              <div class="card-body">
+
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <label>Oath Type</label>
+                    <input class="form-control">
+                  </div>
+                  <div class="col-md-4">
+                    <label>Date</label>
+                    <input type="date" class="form-control">
+                  </div>
+                  <div class="col-md-4">
+                    <label>File Upload</label>
+                    <input type="file" class="form-control">
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label>Notes</label>
+                  <textarea class="form-control"></textarea>
+                </div>
+
+                <button class="btn btn-success">Save Oath (Dummy)</button>
+
+              </div>
+            </div>
+          </div>
 
         </div>
+        <!-- END TAB CONTENT -->
 
-        <%- include('../partials/footer') %>
+      </div>
+
+      <%- include('../partials/footer') %>
     </div>
-</div>
 
-<%- include('../partials/customizer') %>
-<%- include('../partials/footer-scripts') %>
+  </div>
 
-<!-- Pleadings JS -->
-<script src="/js/pleadings.js"></script>
+  <%- include('../partials/customizer') %>
+  <%- include('../partials/footer-scripts') %>
+
+<!-- js logic  -->
+ <script>
+  let count = 1;
+
+  document.getElementById("savePleading").addEventListener("click", function () {
+    const type = document.getElementById("docType").value;
+    const title = document.getElementById("title").value;
+    const version = document.getElementById("version").value;
+    const tag = document.getElementById("tag").value;
+
+    if (!type || !title) {
+      alert("Document Type and Title required");
+      return;
+    }
+
+    const table = document.getElementById("pleadingTable");
+
+    if (count === 1) table.innerHTML = "";
+
+    table.innerHTML += `
+      <tr>
+        <td>${count++}</td>
+        <td>${type}</td>
+        <td>${title}</td>
+        <td>${version}</td>
+        <td>${tag}</td>
+      </tr>
+    `;
+
+    document.getElementById("title").value = "";
+    document.getElementById("tag").value = "";
+  });
+</script>
+
+
+
 </body>
 </html>

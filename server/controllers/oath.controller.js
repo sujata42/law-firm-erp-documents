@@ -56,3 +56,33 @@ exports.createOath = async (req, res) => {
     });
   }
 };
+
+
+
+//get method for the oth records
+exports.getOaths = async (req, res) => {
+  try {
+    const { caseId } = req.params;
+
+    const result = await pool.query(
+      `SELECT *
+       FROM oath_records
+       WHERE case_id = $1
+       ORDER BY created_at DESC`,
+      [caseId]
+    );
+
+    res.json({
+      success: true,
+      count: result.rows.length,
+      data: result.rows
+    });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch oaths'
+    });
+  }
+};

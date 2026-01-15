@@ -1,0 +1,59 @@
+<%- include('../partials/html') %>
+
+<head>
+  <%- include('../partials/title-meta', { title: 'Create Document Template' }) %>
+  <%- include('../partials/head-css') %>
+</head>
+
+<body>
+<div class="wrapper">
+
+  <!-- Sidebar + Topbar -->
+  <%- include('../partials/menu') %>
+
+ <div class="page-content">
+  <div class="page-container">
+
+
+      <!-- ✅ PASTE STARTS HERE -->
+      <div class="card">
+        <div class="card-body">
+          <h4 class="page-title mb-3">Create Document Template</h4>
+
+          <form method="POST" action="/documents/templates">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Name</label>
+                <input name="name" class="form-control" required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Category</label>
+                <input name="category" class="form-control" required>
+              </div>
+
+              <div class="col-12">
+                <label class="form-label">Content</label>
+                <textarea name="content" class="form-control" rows="6"></textarea>
+              </div>
+            </div>
+
+            <div class="mt-3">
+              <button class="btn btn-primary">Create Template</button>
+              <a href="/documents/templates" class="btn btn-light ms-2">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- ✅ PASTE ENDS HERE -->
+
+    </div>
+
+    <%- include('../partials/footer') %>
+  </div>
+</div>
+
+<%- include('../partials/customizer') %>
+<%- include('../partials/footer-scripts') %>
+</body>
+</html>
