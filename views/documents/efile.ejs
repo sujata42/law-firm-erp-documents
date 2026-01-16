@@ -1,204 +1,89 @@
 <%- include('../partials/html') %>
+
 <head>
-  <%- include('../partials/title-meta', { title: 'E-Filing Workspace' }) %>
+  <%- include('../partials/title-meta', { title: title }) %>
   <%- include('../partials/head-css') %>
 </head>
 
 <body>
 <div class="wrapper">
+
   <%- include('../partials/menu') %>
 
+  <div class="page-content">
+    <div class="page-container">
 
-  <div class="row mb-3">
-  <div class="col-12">
-    <h4 class="page-title">E-Filing Workspace</h4>
-    <p class="text-muted mb-0">Matter #<%= matterId %></p>
-  </div>
-</div>
-
-<div class="page-content">
-  <div class="page-container">
-
-      <h4 class="mb-4">E-Filing Workspace – Matter <%= matterId || '' %></h4>
+      <!-- Header -->
+      <div class="page-title-box mb-3">
+        <h4 class="page-title">Filing Workspace</h4>
+        <p class="text-muted mb-0">Matter #<%= matterId %></p>
+      </div>
 
       <!-- Tabs -->
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" data-bs-toggle="tab" href="#upload">Pleadings Upload</a>
+          <a class="nav-link active" data-bs-toggle="tab" href="#upload">
+            Upload Pleadings
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="tab" href="#merge">Merge</a>
+          <a class="nav-link" data-bs-toggle="tab" href="#merge">
+            Merge Pack
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="tab" href="#indexing">Indexing</a>
+          <a class="nav-link" data-bs-toggle="tab" href="#indexing">
+            Indexing
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="tab" href="#signatories">Signatories</a>
+          <a class="nav-link" data-bs-toggle="tab" href="#signatories">
+            Signatories
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="tab" href="#oath">Oath</a>
+          <a class="nav-link" data-bs-toggle="tab" href="#oath">
+            Oath
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="tab" href="#review">Filing Review</a>
+          <a class="nav-link" data-bs-toggle="tab" href="#checklist">
+            Filing Review
+          </a>
         </li>
       </ul>
 
       <!-- Tab Content -->
       <div class="tab-content mt-3">
 
-        <!-- Upload -->
-        <div class="tab-pane fade show active" id="upload">
-  <div class="card">
-    <div class="card-body">
-
-      <div class="row g-3">
-
-        <!-- Link to Matter -->
-        <div class="col-md-4">
-          <label class="form-label">Link to Matter</label>
-          <select class="form-control">
-            <option value="">Select Matter</option>
-            <option>Matter #101</option>
-            <option>Matter #102</option>
-          </select>
+        <div id="upload" class="tab-pane fade show active">
+          <%- include('filing/upload') %>
         </div>
 
-        <!-- Document Type -->
-        <div class="col-md-4">
-          <label class="form-label">Document Type</label>
-          <select class="form-control">
-            <option>Petition</option>
-            <option>Annexure</option>
-            <option>Affidavit</option>
-            <option>Vakalatnama</option>
-            <option>Evidence</option>
-            <option>Other</option>
-          </select>
+        <div id="merge" class="tab-pane fade">
+          <%- include('filing/merge-pack') %>
         </div>
 
-        <!-- Version -->
-        <div class="col-md-4">
-          <label class="form-label">Version</label>
-          <input class="form-control" value="v1" readonly>
+        <div id="indexing" class="tab-pane fade">
+          <%- include('filing/indexing') %>
         </div>
 
-        <!-- Title -->
-        <div class="col-md-6">
-          <label class="form-label">Document Title</label>
-          <input class="form-control" placeholder="Enter document title">
+        <div id="signatories" class="tab-pane fade">
+          <%- include('filing/signatories') %>
         </div>
 
-        <!-- Tags -->
-        <div class="col-md-6">
-          <label class="form-label">Tags (comma separated)</label>
-          <input class="form-control" placeholder="urgent, affidavit, court">
+        <div id="oath" class="tab-pane fade">
+          <%- include('filing/oath') %>
         </div>
 
-        <!-- Upload -->
-        <div class="col-md-12">
-          <label class="form-label">Upload File</label>
-          <input type="file" class="form-control">
-        </div>
-
-      </div>
-
-      <div class="mt-3">
-        <button class="btn btn-primary">
-          Upload Document (Dummy)
-        </button>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-              
-        <!-- Merge -->
-        <div class="tab-pane fade" id="merge">
-  <div class="card">
-    <div class="card-body">
-
-      <p class="text-muted">
-        Drag documents to define merge order (UI placeholder)
-      </p>
-
-      <ul class="list-group mb-3">
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          Petition Draft
-          <span class="badge bg-secondary">v1</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          Affidavit
-          <span class="badge bg-secondary">v2</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          Annexure A
-          <span class="badge bg-secondary">v1</span>
-        </li>
-      </ul>
-
-      <button class="btn btn-warning">
-        Merge Documents (Dummy)
-      </button>
-
-    </div>
-  </div>
-</div>
-
-
-        <!-- Indexing -->
-        <div class="tab-pane fade" id="indexing">
-          <div class="card">
-            <div class="card-body">
-              <input class="form-control mb-2" placeholder="Index Title">
-              <input class="form-control mb-2" placeholder="From Page">
-              <input class="form-control mb-2" placeholder="To Page">
-              <button class="btn btn-success">Add Index</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Signatories -->
-        <div class="tab-pane fade" id="signatories">
-          <div class="card">
-            <div class="card-body">
-              <input class="form-control mb-2" placeholder="Role">
-              <input class="form-control mb-2" placeholder="Name">
-              <select class="form-control mb-2">
-                <option>OTP</option>
-                <option>eSign</option>
-              </select>
-              <button class="btn btn-primary">Add Signer</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Oath -->
-        <div class="tab-pane fade" id="oath">
-          <div class="card">
-            <div class="card-body">
-              <input type="date" class="form-control mb-2">
-              <textarea class="form-control mb-2" placeholder="Notes"></textarea>
-              <button class="btn btn-success">Save Oath</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Filing Review -->
-        <div class="tab-pane fade" id="review">
-          <div class="card">
-            <div class="card-body">
-              <label><input type="checkbox"> All documents uploaded</label><br>
-              <label><input type="checkbox"> Merge verified</label><br>
-              <label><input type="checkbox"> Signatures completed</label><br>
-              <button class="btn btn-dark mt-2">Submit Filing Review</button>
-            </div>
-          </div>
+        <div id="checklist" class="tab-pane fade">
+          <%- include('filing/checklist') %>
         </div>
 
       </div>
 
     </div>
+
     <%- include('../partials/footer') %>
   </div>
 </div>

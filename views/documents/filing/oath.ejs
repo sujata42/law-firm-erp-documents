@@ -1,0 +1,64 @@
+<div class="card">
+  <div class="card-body">
+
+    <h5 class="mb-3">Oath / Affirmation</h5>
+
+    <p class="text-muted">
+      Record oath or affirmation details related to this filing.
+    </p>
+
+    <div class="row g-3 mb-3">
+
+      <div class="col-md-4">
+        <label class="form-label">Oath Date</label>
+        <input type="date" class="form-control">
+      </div>
+
+      <div class="col-md-8">
+        <label class="form-label">Notes</label>
+        <textarea
+          class="form-control"
+          rows="3"
+          placeholder="Any remarks regarding oath / affirmation"
+        ></textarea>
+      </div>
+
+    </div>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-success">
+        Save Oath Details
+      </button>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- new code -->
+<div class="d-flex justify-content-end mt-3">
+  <button class="btn btn-success" onclick="saveOath()">
+    Save Oath
+  </button>
+</div>
+
+<script>
+  function saveOath() {
+    fetch('/api/filing/<%= matterId %>/oath', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        oath_date: '2026-01-15',
+        notes: 'Affidavit sworn'
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        alert('Oath saved');
+      }
+    });
+  }
+</script>

@@ -1,162 +1,228 @@
-<ul class="side-nav">
+<!-- Sidenav Menu Start -->
+<div class="sidenav-menu">
 
-  <!-- HOME -->
-  <li class="side-nav-item">
-    <a href="/dashboard" class="side-nav-link">
-      <i class="ri-dashboard-line"></i>
-      <span> Dashboard </span>
-    </a>
-  </li>
+    <!-- Brand Logo -->
+    <a href="/" class="logo">
+        <span class="logo-light">
+            <span class="logo-lg"><img src="/images/logo.png" alt="logo"></span>
+            <span class="logo-sm"><img src="/images/logo-sm.png" alt="small logo"></span>
+        </span>
 
-  <!-- INTAKE -->
-  <li class="side-nav-item">
-    <a data-bs-toggle="collapse" href="#intakeMenu" class="side-nav-link">
-      <i class="ri-user-add-line"></i>
-      <span> Intake </span>
-      <span class="menu-arrow"></span>
+        <span class="logo-dark">
+            <span class="logo-lg"><img src="/images/logo-dark.png" alt="dark logo"></span>
+            <span class="logo-sm"><img src="/images/logo-sm.png" alt="small logo"></span>
+        </span>
     </a>
-    <div class="collapse" id="intakeMenu">
-      <ul class="side-nav-second-level">
-        <li><a href="#">Leads</a></li>
-        <li><a href="#">Intake Forms</a></li>
-        <li><a href="#">Appointments</a></li>
-        <li><a href="#">Contacts</a></li>
-      </ul>
-    </div>
-  </li>
 
-  <!-- PEOPLE -->
-  <li class="side-nav-item">
-    <a href="#" class="side-nav-link">
-      <i class="ri-group-line"></i>
-      <span> People </span>
-    </a>
-  </li>
+    <!-- Sidebar Hover Menu Toggle Button -->
+    <button class="button-sm-hover">
+        <i class="ri-circle-line align-middle"></i>
+    </button>
 
-  <!-- ORGANIZATIONS -->
-  <li class="side-nav-item">
-    <a href="#" class="side-nav-link">
-      <i class="ri-building-line"></i>
-      <span> Organizations </span>
-    </a>
-  </li>
+    <!-- Sidebar Menu Toggle Button -->
+    <button class="sidenav-toggle-button">
+        <i class="ri-menu-5-line fs-20"></i>
+    </button>
 
-  <!-- MATTERS -->
-  <li class="side-nav-item">
-    <a data-bs-toggle="collapse" href="#mattersMenu" class="side-nav-link">
-      <i class="ri-briefcase-line"></i>
-      <span> Matters </span>
-      <span class="menu-arrow"></span>
-    </a>
-    <div class="collapse" id="mattersMenu">
-      <ul class="side-nav-second-level">
-        <li><a href="#">All Matters</a></li>
-        <li><a href="#">Create Matter</a></li>
-        <li><a href="#">Matter Templates</a></li>
-      </ul>
-    </div>
-  </li>
+    <!-- Full Sidebar Menu Close Button -->
+    <button class="button-close-fullsidebar">
+        <i class="ti ti-x align-middle"></i>
+    </button>
 
-  <!-- TASKS -->
-  <li class="side-nav-item">
-    <a data-bs-toggle="collapse" href="#tasksMenu" class="side-nav-link">
-      <i class="ri-task-line"></i>
-      <span> Tasks </span>
-      <span class="menu-arrow"></span>
-    </a>
-    <div class="collapse" id="tasksMenu">
-      <ul class="side-nav-second-level">
-        <li><a href="#">My Tasks</a></li>
-        <li><a href="#">Team Tasks</a></li>
-      </ul>
-    </div>
-  </li>
+    <div data-simplebar>
 
-  <!-- CALENDAR -->
-  <li class="side-nav-item">
-    <a data-bs-toggle="collapse" href="#calendarMenu" class="side-nav-link">
-      <i class="ri-calendar-line"></i>
-      <span> Calendar </span>
-      <span class="menu-arrow"></span>
-    </a>
-    <div class="collapse" id="calendarMenu">
-      <ul class="side-nav-second-level">
-        <li><a href="#">Firm Calendar</a></li>
-        <li><a href="#">Court Dates</a></li>
-      </ul>
-    </div>
-  </li>
+        <!-- User -->
+        <div class="sidenav-user">
+            <div class="dropdown-center text-center">
+                <a class="topbar-link dropdown-toggle text-reset drop-arrow-none px-2" data-bs-toggle="dropdown"
+                    type="button" aria-haspopup="false" aria-expanded="false">
+                    <img src="/images/users/avatar-1.jpg" width="46" class="rounded-circle" alt="user-image">
+                    <span class="d-flex justify-content-center gap-1 sidenav-user-name my-2">
+                        <span>
+                            <span class="mb-0 fw-semibold lh-base fs-15">Nowak Helme</span>
+                            <p class="my-0 fs-13 text-muted">Admin Head</p>
+                        </span>
 
-  <!-- DOCUMENTS -->
-  <li class="side-nav-item">
-    <a data-bs-toggle="collapse" href="#documentsMenu" class="side-nav-link">
-      <i class="ri-file-list-line"></i>
-      <span> Documents </span>
-      <span class="menu-arrow"></span>
-    </a>
-    <div class="collapse" id="documentsMenu">
-      <ul class="side-nav-second-level">
-        <li><a href="/documents">Document Center</a></li>
-        <li><a href="/documents/templates">Templates</a></li>
-        <li><a href="/cases/1/pleadings">E-File / Filing Workspace</a></li>
-      </ul>
-    </div>
-  </li>
+                        <i class="ri-arrow-down-s-line d-block sidenav-user-arrow align-middle"></i>
+                    </span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <!-- item-->
+                    <div class="dropdown-header noti-title">
+                        <h6 class="text-overflow m-0">Welcome !</h6>
+                    </div>
 
-  <!-- BILLING -->
-  <li class="side-nav-item">
-    <a data-bs-toggle="collapse" href="#billingMenu" class="side-nav-link">
-      <i class="ri-wallet-line"></i>
-      <span> Billing </span>
-      <span class="menu-arrow"></span>
-    </a>
-    <div class="collapse" id="billingMenu">
-      <ul class="side-nav-second-level">
-        <li><a href="#">Time Entries</a></li>
-        <li><a href="#">Expenses</a></li>
-        <li><a href="#">Invoices</a></li>
-        <li><a href="#">Payments</a></li>
-      </ul>
-    </div>
-  </li>
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item">
+                        <i class="ri-account-circle-line me-1 fs-16 align-middle"></i>
+                        <span class="align-middle">My Account</span>
+                    </a>
 
-  <!-- REPORTS -->
-  <li class="side-nav-item">
-    <a data-bs-toggle="collapse" href="#reportsMenu" class="side-nav-link">
-      <i class="ri-bar-chart-line"></i>
-      <span> Reports </span>
-      <span class="menu-arrow"></span>
-    </a>
-    <div class="collapse" id="reportsMenu">
-      <ul class="side-nav-second-level">
-        <li><a href="#">Matter Reports</a></li>
-        <li><a href="#">Billing Reports</a></li>
-        <li><a href="#">Productivity</a></li>
-      </ul>
-    </div>
-  </li>
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item">
+                        <i class="ri-wallet-3-line me-1 fs-16 align-middle"></i>
+                        <span class="align-middle">Wallet : <span class="fw-semibold">$89.25k</span></span>
+                    </a>
 
-  <!-- SETTINGS -->
-  <li class="side-nav-item">
-    <a data-bs-toggle="collapse" href="#settingsMenu" class="side-nav-link">
-      <i class="ri-settings-3-line"></i>
-      <span> Settings </span>
-      <span class="menu-arrow"></span>
-    </a>
-    <div class="collapse" id="settingsMenu">
-      <ul class="side-nav-second-level">
-        <li><a href="#">Firm Profile</a></li>
-        <li><a href="#">Users & Roles</a></li>
-        <li><a href="#">Practice Areas</a></li>
-        <li><a href="#">Tax Setup (GST/VAT)</a></li>
-      </ul>
-    </div>
-  </li>
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item">
+                        <i class="ri-settings-2-line me-1 fs-16 align-middle"></i>
+                        <span class="align-middle">Settings</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item">
+                        <i class="ri-question-line me-1 fs-16 align-middle"></i>
+                        <span class="align-middle">Support</span>
+                    </a>
+
+                    <div class="dropdown-divider"></div>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item">
+                        <i class="ri-lock-line me-1 fs-16 align-middle"></i>
+                        <span class="align-middle">Lock Screen</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item active fw-semibold text-danger">
+                        <i class="ri-logout-box-line me-1 fs-16 align-middle"></i>
+                        <span class="align-middle">Sign Out</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!--- Sidenav Menu -->
+        <ul class="side-nav">
+
+    <!-- Dashboard -->
+    <li class="side-nav-item">
+        <a href="/" class="side-nav-link">
+            <span class="menu-icon"><i class="ti ti-dashboard"></i></span>
+            <span class="menu-text">Dashboard</span>
+        </a>
+    </li>
+
+    <!-- Intake -->
+    <li class="side-nav-item">
+        <a data-bs-toggle="collapse" href="#sidebarIntake" class="side-nav-link">
+            <span class="menu-icon"><i class="ti ti-user-plus"></i></span>
+            <span class="menu-text">Intake</span>
+            <span class="menu-arrow"></span>
+        </a>
+        <div class="collapse" id="sidebarIntake">
+            <ul class="sub-menu">
+                <li class="side-nav-item"><a href="/intake/leads" class="side-nav-link">Leads</a></li>
+                <li class="side-nav-item"><a href="/intake/forms" class="side-nav-link">Intake Forms</a></li>
+                <li class="side-nav-item"><a href="/intake/appointments" class="side-nav-link">Appointments</a></li>
+            </ul>
+        </div>
+    </li>
+
+    <!-- Contacts -->
+    <li class="side-nav-item">
+        <a data-bs-toggle="collapse" href="#sidebarContacts" class="side-nav-link">
+            <span class="menu-icon"><i class="ti ti-users"></i></span>
+            <span class="menu-text">Contacts</span>
+            <span class="menu-arrow"></span>
+        </a>
+        <div class="collapse" id="sidebarContacts">
+            <ul class="sub-menu">
+                <li class="side-nav-item"><a href="/contacts/people" class="side-nav-link">People</a></li>
+                <li class="side-nav-item"><a href="/contacts/organizations" class="side-nav-link">Organizations</a></li>
+            </ul>
+        </div>
+    </li>
+
+    <!-- Matters -->
+    <li class="side-nav-item">
+        <a data-bs-toggle="collapse" href="#sidebarMatters" class="side-nav-link">
+            <span class="menu-icon"><i class="ti ti-briefcase"></i></span>
+            <span class="menu-text">Matters</span>
+            <span class="menu-arrow"></span>
+        </a>
+        <div class="collapse" id="sidebarMatters">
+            <ul class="sub-menu">
+                <li class="side-nav-item"><a href="/matters" class="side-nav-link">All Matters</a></li>
+                <li class="side-nav-item"><a href="/matters/create" class="side-nav-link">Create Matter</a></li>
+            </ul>
+        </div>
+    </li>
+
+    <!-- Tasks -->
+    <li class="side-nav-item">
+        <a data-bs-toggle="collapse" href="#sidebarTasks" class="side-nav-link">
+            <span class="menu-icon"><i class="ti ti-checklist"></i></span>
+            <span class="menu-text">Tasks</span>
+            <span class="menu-arrow"></span>
+        </a>
+        <div class="collapse" id="sidebarTasks">
+            <ul class="sub-menu">
+                <li class="side-nav-item"><a href="/tasks/my" class="side-nav-link">My Tasks</a></li>
+                <li class="side-nav-item"><a href="/tasks/team" class="side-nav-link">Team Tasks</a></li>
+            </ul>
+        </div>
+    </li>
+
+    <!-- Calendar -->
+    <li class="side-nav-item">
+        <a href="/calendar" class="side-nav-link">
+            <span class="menu-icon"><i class="ti ti-calendar"></i></span>
+            <span class="menu-text">Calendar</span>
+        </a>
+    </li>
+
+    <!-- Documents (CORE MODULE) -->
+    <li class="side-nav-item">
+        <a data-bs-toggle="collapse" href="#sidebarDocuments" class="side-nav-link">
+            <span class="menu-icon"><i class="ti ti-file-text"></i></span>
+            <span class="menu-text">Documents</span>
+            <span class="menu-arrow"></span>
+        </a>
+        <div class="collapse" id="sidebarDocuments">
+            <ul class="sub-menu">
+                <li class="side-nav-item"><a href="/documents" class="side-nav-link">Document Center</a></li>
+                <li class="side-nav-item"><a href="/documents/templates" class="side-nav-link">Templates</a></li>
+                <li class="side-nav-item"><a href="/documents/filing/1" class="side-nav-link">Filing Workspace</a></li>
+            </ul>
+        </div>
+    </li>
+
+    <!-- Billing -->
+    <li class="side-nav-item">
+        <a href="/billing" class="side-nav-link">
+            <span class="menu-icon"><i class="ti ti-wallet"></i></span>
+            <span class="menu-text">Billing</span>
+        </a>
+    </li>
+
+    <!-- Reports -->
+    <li class="side-nav-item">
+        <a href="/reports" class="side-nav-link">
+            <span class="menu-icon"><i class="ti ti-chart-bar"></i></span>
+            <span class="menu-text">Reports</span>
+        </a>
+    </li>
+
+    <!-- Settings -->
+    <li class="side-nav-item">
+        <a href="/settings" class="side-nav-link">
+            <span class="menu-icon"><i class="ti ti-settings"></i></span>
+            <span class="menu-text">Settings</span>
+        </a>
+    </li>
 
 </ul>
-<!-- End Sidebar -->
 
+        <!-- Help Box -->
+        <div class="help-box text-center">
+            <h5 class="fw-semibold fs-16">Unlimited Access</h5>
+            <p class="mb-3 text-muted">Upgrade to plan to get access to unlimited reports</p>
+            <a href="javascript: void(0);" class="btn btn-danger btn-sm">Upgrade</a>
+        </div>
 
-
-
-
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- Sidenav Menu End -->

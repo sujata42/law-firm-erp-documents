@@ -1,0 +1,102 @@
+<div class="card">
+  <div class="card-body">
+
+    <h5 class="mb-3">Indexing</h5>
+
+    <p class="text-muted">
+      Define index entries with page ranges for the filing pack.
+    </p>
+
+    <!-- Add Index Entry -->
+    <div class="row g-2 mb-3">
+      <div class="col-md-6">
+        <input
+          class="form-control"
+          placeholder="Index Title (e.g. Petition)"
+        >
+      </div>
+
+      <div class="col-md-3">
+        <input
+          type="number"
+          class="form-control"
+          placeholder="From Page"
+        >
+      </div>
+
+      <div class="col-md-3">
+        <input
+          type="number"
+          class="form-control"
+          placeholder="To Page"
+        >
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <button class="btn btn-success">
+        Add Index Entry
+      </button>
+    </div>
+
+    <!-- Index List -->
+    <table class="table table-bordered align-middle">
+      <thead class="table-light">
+        <tr>
+          <th>Index Title</th>
+          <th>From</th>
+          <th>To</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Petition</td>
+          <td>1</td>
+          <td>12</td>
+        </tr>
+        <tr>
+          <td>Affidavit</td>
+          <td>13</td>
+          <td>18</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<!-- new code  -->
+ <div class="d-flex justify-content-end mt-3">
+  <button class="btn btn-success" onclick="saveIndexing()">
+    Save Indexing
+  </button>
+</div>
+
+<script>
+  function saveIndexing() {
+    fetch('/api/filing/<%= matterId %>/indexing', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        items: [
+          { title: 'Petition', from: 1, to: 10 },
+          { title: 'Affidavit', from: 11, to: 15 }
+        ]
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        alert('Indexing saved successfully');
+      } else {
+        alert('Failed to save indexing');
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert('Indexing API error');
+    });
+  }
+</script>

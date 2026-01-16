@@ -1,0 +1,69 @@
+<div class="card">
+  <div class="card-body">
+
+    <h5 class="mb-3">Merge Pack</h5>
+
+    <p class="text-muted">
+      Arrange documents in the order they should appear in the final filing pack.
+    </p>
+
+    <!-- Document List (UI placeholder) -->
+    <ul class="list-group mb-3">
+
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span>Petition</span>
+        <span class="badge bg-secondary">v1</span>
+      </li>
+
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span>Affidavit</span>
+        <span class="badge bg-secondary">v2</span>
+      </li>
+
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span>Annexure A</span>
+        <span class="badge bg-secondary">v1</span>
+      </li>
+
+    </ul>
+
+    <div class="d-flex justify-content-end">
+  <button
+    class="btn btn-warning"
+    onclick="saveMergePack()">
+    Generate Merge Pack
+  </button>
+</div>
+
+<script>
+  function saveMergePack() {
+    fetch('/api/filing/<%= matterId %>/merge', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        documents: [
+          { document_id: 1, order: 1 },
+          { document_id: 2, order: 2 }
+        ]
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        alert('Merge pack saved successfully');
+      } else {
+        alert('Failed to save merge pack');
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert('Error saving merge pack');
+    });
+  }
+</script>
+
+
+  </div>
+</div>

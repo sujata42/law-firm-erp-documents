@@ -1,0 +1,56 @@
+<div class="card">
+  <div class="card-body">
+
+    <h5 class="mb-3">Upload Pleadings</h5>
+
+    <form>
+      <div class="row g-3">
+
+        <!-- Document Title -->
+        <div class="col-md-6">
+          <label class="form-label">Document Title</label>
+          <input class="form-control" placeholder="Enter document title">
+        </div>
+
+        <!-- Document Type -->
+        <div class="col-md-3">
+          <label class="form-label">Document Type</label>
+          <select class="form-control">
+            <option>Petition</option>
+            <option>Annexure</option>
+            <option>Affidavit</option>
+            <option>Vakalatnama</option>
+            <option>Evidence</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <!-- Version -->
+        <div class="col-md-3">
+          <label class="form-label">Version</label>
+          <input class="form-control" value="v1" readonly>
+        </div>
+
+        <!-- Tags -->
+        <div class="col-md-6">
+          <label class="form-label">Tags</label>
+          <input class="form-control" placeholder="urgent, draft">
+        </div>
+
+        <!-- File -->
+        <div class="col-md-6">
+          <label class="form-label">Upload File</label>
+          <input type="file" class="form-control">
+        </div>
+
+      </div>
+
+      <div class="mt-3">
+        <button type="button" class="btn btn-primary">
+          Upload Document
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>

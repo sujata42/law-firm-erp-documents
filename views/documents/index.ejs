@@ -1,8 +1,7 @@
-index.ejs code :==
 <%- include('../partials/html') %>
 
 <head>
-  <%- include('../partials/title-meta', { title: 'Document Center' }) %>
+  <%- include('../partials/title-meta', { title: title }) %>
   <%- include('../partials/head-css') %>
 </head>
 
@@ -12,66 +11,100 @@ index.ejs code :==
   <%- include('../partials/menu') %>
 
   <div class="page-content">
-  <div class="page-container">
+    <div class="page-container">
 
-
-
-      <div class="page-title-box mb-3">
-  <h4 class="page-title">Document Center</h4>
-</div>
+      <!-- Page Title -->
+      <div class="page-title-box mb-3 d-flex justify-content-between align-items-center">
+        <h4 class="page-title">Document Center</h4>
+        <a href="/documents/create" class="btn btn-primary">
+          Upload Document
+        </a>
+      </div>
 
       <!-- Filters -->
       <div class="card mb-3">
         <div class="card-body row g-2">
           <div class="col-md-3">
             <select class="form-control">
-              <option>All Matters</option>
+              <option value="">All Matters</option>
+              <!-- future: populate from matters -->
             </select>
           </div>
+
           <div class="col-md-2">
             <select class="form-control">
-              <option>All Types</option>
+              <option value="">All Types</option>
               <option>Petition</option>
+              <option>Annexure</option>
               <option>Affidavit</option>
+              <option>Vakalatnama</option>
+              <option>Evidence</option>
+              <option>Other</option>
             </select>
           </div>
+
           <div class="col-md-2">
             <input class="form-control" placeholder="Uploaded By">
           </div>
+
           <div class="col-md-3">
             <input type="date" class="form-control">
           </div>
+
           <div class="col-md-2">
-            <button class="btn btn-primary w-100">Filter</button>
+            <button class="btn btn-outline-primary w-100">
+              Apply
+            </button>
           </div>
         </div>
       </div>
 
-      <!-- Table -->
+      <!-- Documents Table -->
       <div class="card">
         <div class="card-body">
           <table class="table table-bordered align-middle">
             <thead class="table-light">
               <tr>
-                <th>Title</th>
+                <th>Doc Title</th>
                 <th>Matter</th>
                 <th>Type</th>
                 <th>Version</th>
-                <th>Updated</th>
-                <th>Actions</th>
+                <th>Updated At</th>
+                <th class="text-center">Actions</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Petition Draft</td>
-                <td>Matter #101</td>
-                <td>Petition</td>
-                <td>v1</td>
-                <td>Today</td>
-                <td>
-                  <button class="btn btn-sm btn-outline-primary">View</button>
-                </td>
-              </tr>
+              <% if (documents && documents.length > 0) { %>
+                <% documents.forEach(doc => { %>
+                  <tr>
+                    <td><%= doc.title %></td>
+                    <td>
+                      <%= doc.matter_id ? ('Matter #' + doc.matter_id) : '-' %>
+                    </td>
+                    <td><%= doc.document_type %></td>
+                    <td><%= doc.latest_version %></td>
+                    <td>
+                      <%= doc.updated_at
+                        ? new Date(doc.updated_at).toLocaleDateString()
+                        : '-' %>
+                    </td>
+                    <td class="text-center">
+                      <a href="#" class="btn btn-sm btn-outline-primary">View</a>
+                      <button
+                        class="btn btn-sm btn-outline-secondary"
+                        data-document-id="<%= doc.id %>">
+                        Versions
+                      </button>
+                    </td>
+                  </tr>
+                <% }) %>
+              <% } else { %>
+                <tr>
+                  <td colspan="6" class="text-center text-muted">
+                    No documents found
+                  </td>
+                </tr>
+              <% } %>
             </tbody>
           </table>
         </div>

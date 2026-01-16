@@ -1,0 +1,97 @@
+<div class="card">
+  <div class="card-body">
+
+    <h5 class="mb-3">Signatories</h5>
+
+    <p class="text-muted">
+      Assign signatories and their signing method for this filing.
+    </p>
+
+    <!-- Add Signatory -->
+    <div class="row g-2 mb-3">
+
+      <div class="col-md-4">
+        <input
+          class="form-control"
+          placeholder="Role (e.g. Petitioner, Advocate)"
+        >
+      </div>
+
+      <div class="col-md-4">
+        <input
+          class="form-control"
+          placeholder="Signer Name"
+        >
+      </div>
+
+      <div class="col-md-4">
+        <select class="form-control">
+          <option>OTP</option>
+          <option>eSign</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="mb-4">
+      <button class="btn btn-primary">
+        Add Signatory
+      </button>
+    </div>
+
+    <!-- Signatories List -->
+    <table class="table table-bordered align-middle">
+      <thead class="table-light">
+        <tr>
+          <th>Role</th>
+          <th>Name</th>
+          <th>Method</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Petitioner</td>
+          <td>Rahul Sharma</td>
+          <td>OTP</td>
+        </tr>
+        <tr>
+          <td>Advocate</td>
+          <td>Adv. Mehta</td>
+          <td>eSign</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+
+<!-- new code  -->
+ <div class="d-flex justify-content-end mt-3">
+  <button class="btn btn-primary" onclick="saveSignatories()">
+    Save Signatories
+  </button>
+</div>
+
+<script>
+  function saveSignatories() {
+    fetch('/api/filing/<%= matterId %>/signatories', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        signatories: [
+          { role: 'Petitioner', name: 'Rahul Sharma', method: 'OTP' },
+          { role: 'Advocate', name: 'Adv Mehta', method: 'eSign' }
+        ]
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        alert('Signatories saved');
+      }
+    });
+  }
+</script>

@@ -39,6 +39,10 @@ app.use('/api', require('./server/routes/indexes.routes'));
 app.use('/api', require('./server/routes/signatories.routes'));
 app.use('/api', require('./server/routes/oath.routes'));
 app.use('/api', require('./server/routes/oath.routes'));
+app.use("/api/filing", require("./server/routes/filing.routes"));
+
+// app.use("/api", require("./server/routes/filing.routes"));      //new code line 
+
 
 
 // new code according to task 
