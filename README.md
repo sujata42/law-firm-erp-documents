@@ -6,7 +6,7 @@ The module is designed to work for **India + global law firms** and supports doc
 
 ---
 
-## 📌 Module Scope
+## 📌 module scopes
 
 ### 1. Document Center
 - Centralized repository for all documents
